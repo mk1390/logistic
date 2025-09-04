@@ -1,11 +1,26 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/arslogis/tracking.arslogistic.id
+    # Hentikan eksekusi jika ada error
     - set -e
+
+    # Copy semua file ke folder tujuan
     - /bin/cp -R * $DEPLOYPATH
+
+    # Masuk ke folder project
     - cd $DEPLOYPATH
+
+    # Install dependency Composer tanpa dev packages
     - /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader
+
+    # Set permission folder storage & bootstrap/cache
     - chmod -R 775 storage bootstrap/cache
+    - chown -R $USER:$USER storage bootstrap/cache
+
+    # Jalankan optimasi Laravel
     - php artisan config:cache
     - php artisan route:cache
     - php artisan view:cache
+
+    # (Opsional) Jalankan migrasi database
+    # - php artisan migrate --force
