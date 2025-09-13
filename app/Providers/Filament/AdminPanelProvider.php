@@ -25,14 +25,16 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             
-            ->brandName('ARS Logistic')
+            ->brandLogo(asset('\images\landscape-logo.png'))
+            ->favicon(asset('\images\favicon.png'))
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
+            ->font('Poppins')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

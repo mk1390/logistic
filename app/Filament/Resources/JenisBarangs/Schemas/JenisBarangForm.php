@@ -18,8 +18,7 @@ class JenisBarangForm
                 ->label('Jenis Barang (exp: Alat Komunikasi, Alat Kedokteran dll)')
                 ->required(),
                 TextInput::make('keterangan')
-                ->label('Keterangan')
-                ->required(),
+                ->label('Keterangan'),
             ]);
     }
 }

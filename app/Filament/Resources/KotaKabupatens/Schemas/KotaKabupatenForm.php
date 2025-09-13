@@ -13,12 +13,29 @@ class KotaKabupatenForm
         return $schema
             ->components([
                 TextInput::make('nama_kota')
-                ->label('Nama Kota/Kabupaten (exp: SURABAYA)')
-                ->required(),
+                    ->label('Nama Kota/Kabupaten (exp: SURABAYA)')
+                    ->required()
+                    ->extraAttributes([
+                        'onkeydown' => "
+                        if (event.getModifierState('CapsLock') === false) {
+                        event.preventDefault();
+                    alert('Nyalakan CAPS LOCK untuk mengisi field ini!');
+                            }
+                    ",
+                    ]),
+
                 TextInput::make('inisial_kota')
-                ->label('Inisial Kota/Kabupaten (exp: SBY)')
-                ->maxLength('3')
-                ->required(),
+                    ->label('Inisial Kota/Kabupaten (exp: SBY)')
+                    ->maxLength('3')
+                    ->required()
+                    ->extraAttributes([
+                        'onkeydown' => "
+                        if (event.getModifierState('CapsLock') === false) {
+                        event.preventDefault();
+                    alert('Nyalakan CAPS LOCK untuk mengisi field ini!');
+                            }
+                    ",
+                    ]),
             ]);
     }
 }

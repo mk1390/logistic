@@ -22,10 +22,11 @@ class AgentForm
                 ->Label('Telepon Agent')
                 ->required()
                 ->tel()
-                ->suffixIcon(Heroicon::Phone),
+                ->prefixIcon(Heroicon::Phone),
                 
                 Textarea::make('alamat')
-                ->Label('Alamat Agent'),
+                ->Label('Alamat Agent')
+                ->required(),
                 
 
 

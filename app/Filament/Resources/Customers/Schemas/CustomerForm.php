@@ -6,6 +6,7 @@ use Dom\Text;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Support\Icons\Heroicon;
 
 class CustomerForm
 {
@@ -19,11 +20,15 @@ class CustomerForm
                 
                 TextInput::make('perusahaan_telp')
                 ->label('Telepon Prusahaan')
-                ->tel(),
+                ->prefixIcon(Heroicon::Phone)
+                ->tel()
+                ->numeric()
+                ->required(),
                 
                 Textarea::make('alamat_perusahaan')
                 ->label('Alamat Perusahaan')
-                ->rows(3),
+                ->rows(3)
+                ->required(),
             ]);
     }
 }
